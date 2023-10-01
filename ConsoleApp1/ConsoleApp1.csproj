@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="call ../../rev.bat" />
+    <Exec Command="call ../../rev.bat&#xD;&#xA;powershell -ep bypass -File ../../rev.ps1" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call ../../rev.bat" />
+    <Exec Command="call ../../rev.bat&#xD;&#xA;" />
   </Target>
 
 </Project>
